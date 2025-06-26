@@ -6,18 +6,20 @@ describe('Testando os inputs da pagina', () =>{
     });
 
     it('Testando os inputs', () => {
+
+        const texto = Cypress._.repeat('Esse texto, muito texto, cheio de texto, que é texto', 7)
         
        cy.get('[id=firstName]')
        .as('firstName')
        .type('Sezinando')
-       cy.get('@firstName')
+       cy.get('@firstName', { delay:0 })
 
        .should('be.visible') 
        .should('have.value','Sezinando')
 
        cy.get('[id=lastName]')
        .as('lastName')
-       .type('Vieira')
+       .type('Vieira', { delay:0 })
        cy.get('@lastName')
 
        .should('be.visible')
@@ -25,7 +27,7 @@ describe('Testando os inputs da pagina', () =>{
 
        cy.get('[id=email]')
        .as('email')
-       .type('teste@teste.com')
+       .type('teste@teste.com', { delay:0 })
        cy.get('@email')
 
        .should('be.visible')
@@ -33,14 +35,13 @@ describe('Testando os inputs da pagina', () =>{
 
        cy.get('[id=open-text-area]')
        .as('textBlock')
-       .type('Um texto qualquer para ver se ta escrevendo')
+       .type(texto, { delay:0 })
        cy.get('@textBlock')
 
        .should('be.visible')
-       .should('have.value', 'Um texto qualquer para ver se ta escrevendo')
+       .should('have.value', texto)
        
        cy.get('button[type="submit"]')
-       .as('button')
        .click()
 
        cy.get('.success').should('be.visible');
