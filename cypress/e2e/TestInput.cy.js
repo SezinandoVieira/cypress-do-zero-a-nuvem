@@ -11,8 +11,8 @@ describe('Testando os inputs da pagina', () =>{
         
        cy.get('[id=firstName]')
        .as('firstName')
-       .type('Sezinando')
-       cy.get('@firstName', { delay:0 })
+       .type('Sezinando', { delay:0 })
+       cy.get('@firstName')
 
        .should('be.visible') 
        .should('have.value','Sezinando')
