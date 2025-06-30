@@ -1,25 +1,21 @@
-// ***********************************************
-// This example commands.js shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+Cypress.Commands.add('fillMandatoryFieldsAndSubmit', () => {
+
+    cy.get('[id=firstName]').type('Sezinando', { delay:0 });
+
+    cy.get('[id=lastName]').type('Vieira', { delay:0 });
+       
+    cy.get('[id=email]').type('teste@teste.com', { delay:0 });
+
+    const texto = Cypress._.repeat('Esse texto, muito texto, cheio de texto, que é texto', 7)
+    cy.get('[id=open-text-area]').type(texto, { delay:0 })
+
+    cy.get('button[type="submit"]').click()
+
+});
+
+Cypress.Commands.add('DefaultVisit', () => {
+
+    cy.visit('./src/index.html');
+    cy.title().should('be.equal', 'Central de Atendimento ao Cliente TAT');
+
+})
