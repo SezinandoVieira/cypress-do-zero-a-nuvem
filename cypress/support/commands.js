@@ -13,7 +13,9 @@ Cypress.Commands.add('fillMandatoryFieldsAndSubmit', (data = {
     const texto = Cypress._.repeat('Esse texto, muito texto, cheio de texto, que é texto', 7)
     cy.get('[id=open-text-area]').type(texto, { delay:0 })
 
-    cy.get('button[type="submit"]').click()
+    //utilizando o contains é uma opção para localizar um elemento que só tem o texto que o mesmo possui, como forma de localiza-lo, então
+    //você utiliza o tipo de conteudo, neste exemplo é um botão, e em seguida o texto dele
+    cy.contains('button', 'Enviar').click()
 
 });
 
