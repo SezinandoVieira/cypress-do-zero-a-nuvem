@@ -11,7 +11,7 @@ it('Deixando o campo de telefone vazio quando ele é obrigatorio', () => {
 
     cy.get('#firstName').type('Jobislanio');
     cy.get('#lastName').type('Utonisvaldo');
-    cy.get('[for="phone-checkbox"]').click();
+    cy.get('[for="phone-checkbox"]').check();
     cy.get('#open-text-area').type('um texto textiado');
     cy.get('.button[type="submit"]').click();
     
